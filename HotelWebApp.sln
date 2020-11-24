@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelWebApp", "HotelWebApp\HotelWebApp.csproj", "{46A9F014-2074-47E1-9842-A22951688667}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelWebApp", "HotelWebApp\HotelWebApp.csproj", "{45C3BEDB-7E14-4F04-9934-5A6C9C9BC7A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46A9F014-2074-47E1-9842-A22951688667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46A9F014-2074-47E1-9842-A22951688667}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46A9F014-2074-47E1-9842-A22951688667}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46A9F014-2074-47E1-9842-A22951688667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C3BEDB-7E14-4F04-9934-5A6C9C9BC7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C3BEDB-7E14-4F04-9934-5A6C9C9BC7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C3BEDB-7E14-4F04-9934-5A6C9C9BC7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C3BEDB-7E14-4F04-9934-5A6C9C9BC7A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {391898E6-ACE0-4242-B5B0-97033400AF3C}
+		SolutionGuid = {519AE534-D795-4662-985C-DD56CF507D5A}
 	EndGlobalSection
 EndGlobal

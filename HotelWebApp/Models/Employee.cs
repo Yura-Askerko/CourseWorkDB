@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace HotelWebApp.Models
 {
@@ -12,9 +15,8 @@ namespace HotelWebApp.Models
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Middlename { get; set; }
-        public string Surname { get; set; }
+        [Display(Name = "Full name")]
+        public string FullName { get; set; }
         public string Position { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }

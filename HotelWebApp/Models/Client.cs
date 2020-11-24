@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace HotelWebApp.Models
 {
@@ -11,12 +14,14 @@ namespace HotelWebApp.Models
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Middlename { get; set; }
-        public string Surname { get; set; }
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+        [Display(Name = "Passport data")]
         public string PassportData { get; set; }
+        [Display(Name = "Name of room")]
         public string NameOfRoom { get; set; }
         public string List { get; set; }
+        [Display(Name = "Total cost")]
         public decimal? TotalCost { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }

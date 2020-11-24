@@ -1,0 +1,135 @@
+﻿@model HotelWebApp.ViewModels.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Orders</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" asp-route-page="@Model.PageViewModel.PageIndex">
+    <div class="form-action no-color">
+        <label>Client full name: </label>
+        <input name="Name" value="@Model.OrdersFilterViewModel.Name" />
+
+        <br />
+        <label>from Date: </label>
+        <input name="FromDate" type="date" value="@Model.OrdersFilterViewModel.FromDate" />
+        <label>to Date: </label>
+        <input name="ToDate" type="date" value="@Model.OrdersFilterViewModel.ToDate" />
+
+        <br />
+        <label>Room type: </label>
+        <input name="Type" value="@Model.OrdersFilterViewModel.Type" />
+        <label>Capacity: </label>
+        <input name="Capacity" type="number" min="1" value="@Model.OrdersFilterViewModel.Capacity" />
+
+        <input type="submit" value="Filter" class="btn btn-success" />
+        <!--<a asp-action="Index">Back to Full List</a>-->
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.OrdersCheckIn" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Order.CheckInDate)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.OrdersCheckOut" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Order.CheckOut)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.OrdersClient" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Order.Client)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.OrdersEmpName" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Order.Employee)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.OrdersRoom" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Order.Room)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.Room.RoomRate.Cost)
+            </th>
+            <th>
+                Room capacity
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckInDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomRate.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.Capacity)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.PageViewModel.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.PageViewModel.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortState="@Model.SortViewModel.CurrentState"
+   asp-route-page="@(Model.PageViewModel.PageIndex - 1)"
+   asp-route-name="@Model.OrdersFilterViewModel.Name"
+   asp-route-name="@Model.OrdersFilterViewModel.Capacity"
+   asp-route-name="@Model.OrdersFilterViewModel.Type"
+   asp-route-name="@Model.OrdersFilterViewModel.ToDate"
+   asp-route-name="@Model.OrdersFilterViewModel.FromDate"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+
+<a asp-action="Index"
+   asp-route-sortState="@Model.SortViewModel.CurrentState"
+   asp-route-page="@(Model.PageViewModel.PageIndex+1)"
+   asp-route-name="@Model.OrdersFilterViewModel.Name"
+   asp-route-name="@Model.OrdersFilterViewModel.Capacity"
+   asp-route-name="@Model.OrdersFilterViewModel.Type"
+   asp-route-name="@Model.OrdersFilterViewModel.ToDate"
+   asp-route-name="@Model.OrdersFilterViewModel.FromDate"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

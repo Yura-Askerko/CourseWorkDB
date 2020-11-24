@@ -1,0 +1,93 @@
+﻿@model HotelWebApp.ViewModels.Models.RoomViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Rooms</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" asp-route-page="@Model.PageViewModel.PageIndex">
+    <div class="form-action no-color">
+        <label>Room Type: </label>
+        <input name="Name" value="@Model.RoomsFilterViewModel.Name" />
+
+        <input type="submit" value="Filter" class="btn btn-success" />
+        <!--<a asp-action="Index">Back to Full List</a>-->
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.RoomsType" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Room.Type)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.RoomsCapacity" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Room.Capacity)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortState="@Model.SortViewModel.RoomsSpecification" asp-route-page="@Model.PageViewModel.PageIndex">
+                    @Html.DisplayNameFor(model => model.Room.Specification)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room.RoomRate.Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Rooms)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomRate.Cost)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.PageViewModel.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.PageViewModel.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortState="@Model.SortViewModel.CurrentState"
+   asp-route-page="@(Model.PageViewModel.PageIndex - 1)"
+   asp-route-name="@Model.RoomsFilterViewModel.Name"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+
+<a asp-action="Index"
+   asp-route-sortState="@Model.SortViewModel.CurrentState"
+   asp-route-page="@(Model.PageViewModel.PageIndex+1)"
+   asp-route-name="@Model.RoomsFilterViewModel.Name"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

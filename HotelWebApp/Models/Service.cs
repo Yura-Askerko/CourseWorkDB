@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace HotelWebApp.Models
 {
@@ -7,10 +10,11 @@ namespace HotelWebApp.Models
     {
         public int Id { get; set; }
         public decimal? Cost { get; set; }
-        public int ServicetypeId { get; set; }
+        public int ServiceTypeId { get; set; }
         public int EmployeeId { get; set; }
 
         public virtual Employee Employee { get; set; }
-        public virtual Servicetype Servicetype { get; set; }
+        [Display(Name="Service type")]
+        public virtual ServiceType ServiceType { get; set; }
     }
 }

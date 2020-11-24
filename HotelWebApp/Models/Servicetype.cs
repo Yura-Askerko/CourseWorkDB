@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace HotelWebApp.Models
 {
-    public partial class Servicetype
+    public partial class ServiceType
     {
-        public Servicetype()
+        public ServiceType()
         {
             Services = new HashSet<Service>();
         }
